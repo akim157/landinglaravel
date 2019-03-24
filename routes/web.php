@@ -11,6 +11,15 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::group(['middleware' => 'web'], function(){
+    Route::get('/', 'IndexController@expens')->name('home');
+//    Auth::router();
 });
+
+//admin
+//Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function(){
+//    Route::group();
+//});
+
+
+
