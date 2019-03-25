@@ -2,7 +2,7 @@
     @foreach($pages as $k => $page)
         @if($k%2 == 0)
             <!--Hero_Section-->
-            <section id="hero_section" class="top_cont_outer">
+            <section id="{{ $page->alias }}" class="top_cont_outer">
                 <div class="hero_wrapper">
                     <div class="container">
                         <div class="hero_section">
@@ -24,7 +24,7 @@
             <!--Hero_Section-->
         @else
             <!--Aboutus-->
-            <section id="aboutUs">
+            <section id="{{ $page->alias }}">
                 <div class="inner_wrapper">
                     <div class="container">
                         <h2>{{ $page->name }}</h2>
@@ -109,7 +109,7 @@
                     @foreach($filters as $filter)
                         <li>
                             <a class="" href="#" data-filter=".{{ $filter->filter }}">
-                                <h5>{{ $filter->name }}</h5>
+                                <h5>{{ $filter->filter }}</h5>
                             </a>
                         </li>
                     @endforeach
@@ -152,76 +152,36 @@
     <!--/Portfolio -->
 @endif
 
-<section class="page_section" id="clients"><!--page_section-->
-    <h2>Clients</h2>
-    <!--page_section-->
-    <div class="client_logos"><!--client_logos-->
+@if(isset($peoples) && is_object($peoples))
+    <!--main-section team-start-->
+    <section class="page_section team" id="team">
         <div class="container">
-            <ul class="fadeInRight animated wow">
-                <li><a href="javascript:void(0)"><img src="{{ asset('img/client_logo1.png') }}" alt=""></a></li>
-                <li><a href="javascript:void(0)"><img src="{{ asset('img/client_logo2.png') }}" alt=""></a></li>
-                <li><a href="javascript:void(0)"><img src="{{ asset('img/client_logo3.png') }}" alt=""></a></li>
-                <li><a href="javascript:void(0)"><img src="{{ asset('img/client_logo5.png') }}" alt=""></a></li>
-            </ul>
+            <h2>Team</h2>
+            <h6>Lorem ipsum dolor sit amet, consectetur adipiscing.</h6>
+            <div class="team_section clearfix">
+                @foreach($peoples as $people)
+                    <div class="team_area">
+                        <div class="team_box wow fadeInDown delay-03s">
+                            <div class="team_box_shadow"><a href="javascript:void(0)"></a></div>
+                            {!! Html::image('img/'.$people->images, $people->name) !!}
+                            <ul>
+                                <li><a href="javascript:void(0)" class="fa fa-twitter"></a></li>
+                                <li><a href="javascript:void(0)" class="fa fa-facebook"></a></li>
+                                <li><a href="javascript:void(0)" class="fa fa-pinterest"></a></li>
+                                <li><a href="javascript:void(0)" class="fa fa-google-plus"></a></li>
+                            </ul>
+                        </div>
+                        <h3 class="wow fadeInDown delay-03s">{{ $people->name }}</h3>
+                        <span class="wow fadeInDown delay-03s">{{ $people->professia }}</span>
+                        <p class="wow fadeInDown delay-03s">{{ $people->text }}</p>
+                    </div>
+                @endforeach
+            </div>
         </div>
-    </div>
-</section>
-<!--client_logos-->
+    </section>
+    <!--/Team-->
+@endif
 
-<section class="page_section team" id="team"><!--main-section team-start-->
-    <div class="container">
-        <h2>Team</h2>
-        <h6>Lorem ipsum dolor sit amet, consectetur adipiscing.</h6>
-        <div class="team_section clearfix">
-            <div class="team_area">
-                <div class="team_box wow fadeInDown delay-03s">
-                    <div class="team_box_shadow"><a href="javascript:void(0)"></a></div>
-                    <img src="{{ asset('img/team_pic1.jpg') }}" alt="">
-                    <ul>
-                        <li><a href="javascript:void(0)" class="fa fa-twitter"></a></li>
-                        <li><a href="javascript:void(0)" class="fa fa-facebook"></a></li>
-                        <li><a href="javascript:void(0)" class="fa fa-pinterest"></a></li>
-                        <li><a href="javascript:void(0)" class="fa fa-google-plus"></a></li>
-                    </ul>
-                </div>
-                <h3 class="wow fadeInDown delay-03s">Tom Rensed</h3>
-                <span class="wow fadeInDown delay-03s">Chief Executive Officer</span>
-                <p class="wow fadeInDown delay-03s">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin consequat sollicitudin cursus. Dolor sit amet, consectetur adipiscing elit proin consequat.</p>
-            </div>
-            <div class="team_area">
-                <div class="team_box  wow fadeInDown delay-06s">
-                    <div class="team_box_shadow"><a href="javascript:void(0)"></a></div>
-                    <img src="{{ asset('img/team_pic2.jpg') }}" alt="">
-                    <ul>
-                        <li><a href="javascript:void(0)" class="fa fa-twitter"></a></li>
-                        <li><a href="javascript:void(0)" class="fa fa-facebook"></a></li>
-                        <li><a href="javascript:void(0)" class="fa fa-pinterest"></a></li>
-                        <li><a href="javascript:void(0)" class="fa fa-google-plus"></a></li>
-                    </ul>
-                </div>
-                <h3 class="wow fadeInDown delay-06s">Kathren Mory</h3>
-                <span class="wow fadeInDown delay-06s">Vice President</span>
-                <p class="wow fadeInDown delay-06s">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin consequat sollicitudin cursus. Dolor sit amet, consectetur adipiscing elit proin consequat.</p>
-            </div>
-            <div class="team_area">
-                <div class="team_box wow fadeInDown delay-09s">
-                    <div class="team_box_shadow"><a href="javascript:void(0)"></a></div>
-                    <img src="{{ asset('img/team_pic3.jpg') }}" alt="">
-                    <ul>
-                        <li><a href="javascript:void(0)" class="fa fa-twitter"></a></li>
-                        <li><a href="javascript:void(0)" class="fa fa-facebook"></a></li>
-                        <li><a href="javascript:void(0)" class="fa fa-pinterest"></a></li>
-                        <li><a href="javascript:void(0)" class="fa fa-google-plus"></a></li>
-                    </ul>
-                </div>
-                <h3 class="wow fadeInDown delay-09s">Lancer Jack</h3>
-                <span class="wow fadeInDown delay-09s">Senior Manager</span>
-                <p class="wow fadeInDown delay-09s">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin consequat sollicitudin cursus. Dolor sit amet, consectetur adipiscing elit proin consequat.</p>
-            </div>
-        </div>
-    </div>
-</section>
-<!--/Team-->
 <!--Footer-->
 <footer class="footer_wrapper" id="contact">
     <div class="container">
@@ -267,17 +227,18 @@
                     </ul>
                 </div>
                 <div class="col-lg-8 wow fadeInLeft delay-06s">
-                    <div class="form">
-                        <input class="input-text" type="text" name="" value="Your Name *" onFocus="if(this.value==this.defaultValue)this.value='';" onBlur="if(this.value=='')this.value=this.defaultValue;">
-                        <input class="input-text" type="text" name="" value="Your E-mail *" onFocus="if(this.value==this.defaultValue)this.value='';" onBlur="if(this.value=='')this.value=this.defaultValue;">
-                        <textarea class="input-text text-area" cols="0" rows="0" onFocus="if(this.value==this.defaultValue)this.value='';" onBlur="if(this.value=='')this.value=this.defaultValue;">Your Message *</textarea>
+                    <form class="form" action="{{ route('home') }}" method="post">
+                        @csrf
+                        <input class="input-text" type="text" name="name" value="{{ old('name') }}" placeholder="Your Name *" onFocus="if(this.value==this.defaultValue)this.value='';" onBlur="if(this.value=='')this.value=this.defaultValue;">
+                        <input class="input-text" type="text" name="email" value="{{ old('email') }}" placeholder="Your E-mail *" onFocus="if(this.value==this.defaultValue)this.value='';" onBlur="if(this.value=='')this.value=this.defaultValue;">
+                        <textarea class="input-text text-area" name="text" cols="0" rows="0" placeholder="Your Message *" onFocus="if(this.value==this.defaultValue)this.value='';" onBlur="if(this.value=='')this.value=this.defaultValue;">{{ old('text') }}</textarea>
                         <input class="input-btn" type="submit" value="send message">
-                    </div>
+                    </form>
                 </div>
             </div>
         </section>
     </div>
     <div class="container">
-        <div class="footer_bottom"><span>Copyright © 2014,    Template by <a href="http://webthemez.com">WebThemez.com</a>. </span> </div>
+        <div class="footer_bottom"><span>Copyright © {{ '2014 - '.date('Y') }},    Template by <a href="http://webthemez.com">WebThemez.com</a>. </span> </div>
     </div>
 </footer>
