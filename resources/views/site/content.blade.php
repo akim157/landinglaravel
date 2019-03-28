@@ -10,7 +10,7 @@
                                 <div class="col-lg-5 col-sm-7">
                                     <div class="top_left_cont zoomIn wow animated">
                                         {!! $page->text !!}
-                                        {!! link_to('#service', 'Read more', ['class' => 'read_more2']) !!}
+                                        {!! link_to(route('read',['page' => $page->id]), 'Read more', ['class' => 'read_more2']) !!}
                                     </div>
                                 </div>
                                 <div class="col-lg-7 col-sm-5">
@@ -38,7 +38,7 @@
                                         {{ $page->text }}
                                     </div>
                                     <div class="work_bottom"> <span>Want to know more..</span>
-                                        {!! link_to('#contact', 'Contact Us', ['class' => 'contact_btn']) !!}
+                                        {!! link_to(route('read', ['page' => $page->id]), 'Contact Us', ['class' => 'contact_btn']) !!}
                                     </div>
                                 </div>
                             </div>

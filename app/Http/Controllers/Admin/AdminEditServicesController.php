@@ -12,12 +12,17 @@ class AdminEditServicesController extends Controller
     //
     public function expens(Service $service, Request $request)
     {
+        if($request->isMethod('delete'))
+        {
+            $service->delete();
+            return redirect()->route('services')->with('status', 'Delete service');
+        }
         if($request->isMethod('post'))
         {
             $input = $request->except('_token');
 
             $rules = [
-                'name' => 'requried|max:255',
+                'name' => 'required|max:255',
                 'icon' => 'required|max:100',
                 'text' => 'required'
             ];

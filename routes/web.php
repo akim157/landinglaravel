@@ -14,6 +14,8 @@
 Route::group(['middleware' => 'web'], function(){
     Auth::routes();
     Route::match(['get', 'post'],'/', 'IndexController@expens')->name('home');
+
+    Route::get('/page/{page}', 'IndexController@read')->name('read');
 });
 
 //admin

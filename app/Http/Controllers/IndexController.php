@@ -68,4 +68,17 @@ class IndexController extends Controller
         ];
         return view('site.index', $data);
     }
+
+    public function read(Page $page)
+    {
+        if(view()->exists('site.page'))
+        {
+            $data = [
+                'title' => $page->name,
+                'page' => $page
+            ];
+            return view('site.page', $data);
+        }
+        abort(404);
+    }
 }
